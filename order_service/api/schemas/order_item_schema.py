@@ -6,7 +6,7 @@ from utilities.data_validators.entity_validator import con_init, validate_field
 
 
 class OrderItemSchema(EntityBase):
-    product: str
+    product: str = Field(examples=["capuccino"])
     size: Size
     quantity: Optional[con_init(ge=1, strict=True)] = 1
 
