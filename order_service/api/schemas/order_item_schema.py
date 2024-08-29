@@ -1,13 +1,13 @@
 from typing import Optional
 
-from order_service.api.entities.size import Size
+from order_service.api.entities.size_enum import SizeEnum
 from utilities.entities.base import EntityBase
 from utilities.data_validators.entity_validator import con_init, validate_field
 
 
 class OrderItemSchema(EntityBase):
-    product: str = Field(examples=["capuccino"])
-    size: Size
+    product: str # = Field(examples=["capuccino"])
+    size: SizeEnum
     quantity: Optional[con_init(ge=1, strict=True)] = 1
 
     @validate_field("quantity")

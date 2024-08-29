@@ -13,7 +13,7 @@ class OrderModel(OrderModelBase):
     __tablename__ = "order"
 
     id: Mapped[str] = mapped_column(primary_key=True, default=generate)
-    user_id = Mapped[str] = mapped_column(nullable=False)
+    user_id : Mapped[str] = mapped_column(nullable=False)
     status: Mapped[str] = mapped_column(String, default="Created", nullable=False)
     created: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.now())
     schedule_id: Mapped[str] = mapped_column(String, nullable=True)

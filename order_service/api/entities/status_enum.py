@@ -2,7 +2,7 @@ from enum import Enum
 
 
 # https://fastapi.tiangolo.com/fr/tutorial/path-params/#creation-dun-enum
-class Status(str, Enum):
+class StatusEnum(str, Enum):
     created = 'created'
     paid = 'paid'
     cancelled = 'cancelled'

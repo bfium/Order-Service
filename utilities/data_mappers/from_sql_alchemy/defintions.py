@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, DateTime, Integer, ForeignKey, MetaData
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import DeclarativeBase
 
-DeclarativeBase = DeclarativeBase(metadata=MetaData())
+DeclarativeBase = DeclarativeBase
 String = String
 DateTime = DateTime
 Integer = Integer

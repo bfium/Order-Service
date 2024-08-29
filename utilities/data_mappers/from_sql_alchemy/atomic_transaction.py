@@ -3,7 +3,8 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DB_URL = os.getenv("DB_URL")
+DB_URL="sqlite:///orders.db"
+#DB_URL = os.getenv("DB_URL")
 assert DB_URL is not None, 'DB_URL environment variable needed.'
 
 
