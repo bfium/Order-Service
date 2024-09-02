@@ -1,8 +1,7 @@
 from sqlalchemy import Column, String, DateTime, Integer, ForeignKey, MetaData
-from sqlalchemy.orm import relationship
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import relationship, declarative_base
 
-DeclarativeBase = DeclarativeBase
+DeclarativeBase = declarative_base()
 String = String
 DateTime = DateTime
 Integer = Integer

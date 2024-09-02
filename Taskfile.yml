@@ -1,32 +1,43 @@
 version: '3'
 
 tasks:
-  start:
-    desc: Start the Uvicorn server
-    cmds:
-      - uvicorn app:app --host 0.0.0.0 --port 8002 --reload
-    vars:
-      app: main:app
-      host: 0.0.0.0
-      port: 8000
-      reload: true
+    create-db:
+        cmds:
+            - PYTHONPATH=`pwd` alembic revision --autogenerate -m "Added order table"
 
-  start-prod:
-    desc: Start the Uvicorn server in production mode
-    cmds:
-      - uvicorn main:app --host 0.0.0.0 --port 8000
-    vars:
-      app: "main:app"
-      host: "0.0.0.0"
-      port: "8000"
-      reload: false
+    create-schemas:
+        cmds:
+            - PYTHONPATH=`pwd` alembic upgrade heads
 
-  stop:
-    desc: Stop the Uvicorn server
-    cmds:
-      - pkill uvicorn
 
-  lint:
-    desc: Run linter
-    cmds:
-      - flake8 .
+
+    start:
+        desc: Start the Uvicorn server
+        cmds:
+            - uvicorn app:app --host 0.0.0.0 --port 8002 --reload
+        vars:
+            app: main:app
+            host: 0.0.0.0
+            port: 8000
+            reload: true
+
+
+    start-prod:
+        desc: Start the Uvicorn server in production mode
+        cmds:
+            - uvicorn main:app --host 0.0.0.0 --port 8000
+        vars:
+            app: "main:app"
+            host: "0.0.0.0"
+            port: "8000"
+            reload: false
+
+    stop:
+        desc: Stop the Uvicorn server
+        cmds:
+            - pkill uvicorn
+
+    lint:
+        desc: Run linter
+        cmds:
+            - flake8 .
