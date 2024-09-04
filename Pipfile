@@ -16,7 +16,6 @@ uvicorn = "*"
 pyyaml = "*"
 schemathesis = "==3.15.3"
 psycopg2-binary = "*"
-alembic = "*"
 
 [dev-packages]
 black = "*"

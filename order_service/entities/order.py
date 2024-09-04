@@ -6,11 +6,11 @@ class Order:
                  delivery_id=None, order_=None):
         self._order = order_
         self._id = id
-        self._status = status
         self._created = created
+        self.items = [OrderItem(**item) for item in items]
+        self._status = status
         self.schedule_id = schedule_id
         self.delivery_id = delivery_id
-        self.items = [item if isinstance(item, OrderItem) else OrderItem(**item) for item in items]
 
     @property
     def id(self):
@@ -27,7 +27,7 @@ class Order:
     def dict(self):
         return {
             'id': self.id,
-            'items': [item.dict() for item in self.items],
+            'order': [item.dict() for item in self.items],
             'status': self.status,
             'created': self.created,
         }
